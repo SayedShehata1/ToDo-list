@@ -1,6 +1,6 @@
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
-import { fetchTasks, updateTask, deleteTask } from "../../API/api";
+import { fetchTasks, updateTask, deleteTask, addTask } from "../../API/api";
 import { useEffect, useState } from "react";
 
 const TodoList = () => {
@@ -14,6 +14,13 @@ const TodoList = () => {
     };
     getTasks();
   }, []);
+
+  // Add Task function
+  const handleAddTask = async (taskText) => {
+    const newTask = { text: taskText, completed: false };
+    const savedTask = await addTask(newTask);
+    setTasks([...tasks, savedTask]);
+  };
 
   // Toggle Completed Task function
   const HandleToggleCompleteTask = async (taskId) => {
@@ -32,7 +39,7 @@ const TodoList = () => {
   return (
     <div>
       <h2>Todo List</h2>
-      <AddTodo />
+      <AddTodo addTask={handleAddTask} />
       {tasks.map((task) => (
         <TodoItem
           key={task.id}
