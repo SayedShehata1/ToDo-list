@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/tasks";
+// Deployment API URL
+const API_URL = "https://volt-nation-db.onrender.com/tasks";
+
+// local API URL for testing
+// const API_URL = "http://localhost:5000/tasks";
 
 // Fetch tasks from mock API
 export const fetchTasks = async () => {
