@@ -1,7 +1,8 @@
-import AddTodo from "./AddTodo";
-import TodoItem from "./TodoItem";
+import AddTodo from "../AddTodo/AddTodo";
+import TodoItem from "../TodoItem/TodoItem";
 import { fetchTasks, updateTask, deleteTask, addTask } from "../../API/api";
 import { useEffect, useMemo, useState } from "react";
+import styles from "./TodoList.module.css";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
@@ -49,10 +50,10 @@ const TodoList = () => {
   }, [tasks]);
 
   return (
-    <div>
-      <h2>Todo List</h2>
+    <div className={styles.todoList}>
+      <h2 style={{ color: "#714d26" }}>Todo List</h2>
       <AddTodo addTask={handleAddTask} />
-      {momoizedTasks}
+      <ul>{momoizedTasks}</ul>
     </div>
   );
 };

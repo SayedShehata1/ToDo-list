@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./AddTodo.module.css";
 
 const AddTodo = ({ addTask }) => {
   const [taskText, setTaskText] = useState("");
@@ -16,7 +17,7 @@ const AddTodo = ({ addTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.addTodo}>
       <input
         type="text"
         placeholder="Add new task"

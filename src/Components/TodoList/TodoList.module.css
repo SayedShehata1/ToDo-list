@@ -1,0 +1,20 @@
+.todoList {
+  background-color: rgba(227, 225, 225, 0.882);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.todoList h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.todoList ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}

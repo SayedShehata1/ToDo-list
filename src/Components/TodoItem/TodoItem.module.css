@@ -1,0 +1,35 @@
+.todoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.completed {
+  background-color: #d4edda;
+  text-decoration: line-through;
+}
+
+.taskText {
+  display: flex;
+  align-items: center;
+}
+
+.taskText span {
+  margin-left: 0.5rem;
+}
+
+.todoItem button {
+  border: none;
+  background: none;
+  color: #ff0000;
+  cursor: pointer;
+}
+
+.todoItem button:hover {
+  color: #cc0000;
+}
