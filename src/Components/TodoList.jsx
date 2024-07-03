@@ -1,7 +1,7 @@
 import AddTodo from "./AddTodo";
 import TodoItem from "./TodoItem";
 import { fetchTasks, updateTask, deleteTask, addTask } from "../../API/api";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
@@ -36,18 +36,23 @@ const TodoList = () => {
     setTasks(tasks.filter((task) => task.id !== taskId));
   };
 
+  // memoize tasks to prevent unnecessary re-renders
+  const momoizedTasks = useMemo(() => {
+    return tasks.map((task) => (
+      <TodoItem
+        key={task.id}
+        task={task}
+        toggleCompletedTask={HandleToggleCompleteTask}
+        removeTask={handleRemoveTask}
+      />
+    ));
+  }, [tasks]);
+
   return (
     <div>
       <h2>Todo List</h2>
       <AddTodo addTask={handleAddTask} />
-      {tasks.map((task) => (
-        <TodoItem
-          key={task.id}
-          task={task}
-          toggleCompletedTask={HandleToggleCompleteTask}
-          removeTask={handleRemoveTask}
-        />
-      ))}
+      {momoizedTasks}
     </div>
   );
 };
