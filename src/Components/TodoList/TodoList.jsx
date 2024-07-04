@@ -6,12 +6,16 @@ import styles from "./TodoList.module.css";
 
 const TodoList = () => {
   const [tasks, setTasks] = useState([]);
+  // Set loading state to true until the tasks fetched
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetch tasks from the API
     const getTasks = async () => {
       const apiTasks = await fetchTasks();
       setTasks(apiTasks);
+      // Set loading to false after fetching the tasks
+      setLoading(false);
     };
     getTasks();
   }, []);
@@ -53,7 +57,13 @@ const TodoList = () => {
     <div className={styles.todoList}>
       <h2 style={{ color: "#714d26" }}>Todo List</h2>
       <AddTodo addTask={handleAddTask} />
-      <ul>{momoizedTasks}</ul>
+      {loading ? (
+        <div>Loading...</div>
+      ) : tasks.length === 0 ? (
+        <h3>No tasks Todo</h3>
+      ) : (
+        <ul>{momoizedTasks}</ul>
+      )}
     </div>
   );
 };
